@@ -13,7 +13,7 @@ def hello_world():
 
 @app.route('/db')
 def db_query():
-    db = firestore.Client(project=os.environ.get('PROJECT_ID'))
+    db = firestore.Client(project=os.environ.get('PROJECT_ID'), database=os.environ.get('FS_DATABASE'))
     doc_ref = db.collection(os.environ.get('FS_COLLECTION', 'items')).document(os.environ.get('FS_DOCUMENT', 't-shirt'))
     doc = doc_ref.get()
 
